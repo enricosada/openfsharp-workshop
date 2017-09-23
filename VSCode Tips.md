@@ -8,9 +8,10 @@ Use .net core as preferred msbuild host
 Some nice editor improvements
 
 ```
+    // whitespace
     "editor.renderWhitespace": "boundary",
-    "editor.minimap.enabled": false,
 
+    // linelens instead of codelens
     "editor.codeLens": false,
     "FSharp.lineLens.enabled": "replaceCodeLens",
 ```
@@ -20,4 +21,11 @@ Enable ionide diagnostics
 ```
     "FSharp.logLanguageServiceRequests": "both",
     "FSharp.logLanguageServiceRequestsOutputWindowLevel": "DEBUG",
+```
+
+Disable defaults
+
+```
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none"
 ```
