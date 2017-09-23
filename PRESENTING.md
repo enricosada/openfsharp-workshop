@@ -1,0 +1,4 @@
+
+NOTE
+TIPS
+MYSELF
