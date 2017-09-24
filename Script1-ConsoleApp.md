@@ -99,13 +99,149 @@ Two possibilities of deployment:
   - CONS bigger size of binaries
   - CONS distinct binaries for all os
   - PRO is a normal native app (`app.exe` or `app`)
-  - PRO doesnt require .net core runtime installed on target machine
+  - PRO doesnt require .net core runtime installed on target machine,- CONS require .net core deps (like libunwind, OpenSSL) installed
 
-First let's try FDD
+### First let's try FDD
 
 > RUN `dotnet publish`
 
+This create the `bin/Debug/netcoreapp2.0/publish/` directory
+who can be copied in another machine, and run with
+
+```
+dotnet sample1.dll
+```
+
+### Now a SCD, in another directory
+
+> RUN 
+
+```
+dotnet publish --self-contained --runtime win-x64 --output out
+```
+
+and that directory `out` contains `sample1.exe`
+
+Doing the same for osx
+
+```
+dotnet publish --self-contained --runtime osx-x64 --output outosx
+```
+
+Or linux
+
+> RUN
+
+```
+dotnet publish --self-contained -r linux-x64 -o outlinux -c Release
+```
+
+NOTE on linux .net core apps has some requirements, like the `libunwind8` package installed (can be installed with `apt-get install libunwind8`)
 
 
+**NOTE** is possibile to bundle these deps as local copies, ref https://github.com/dotnet/core/blob/master/Documentation/self-contained-linux-apps.md
 
 
+**NOTE** the runtime can be specified also in the fsproj
+
+```xml
+    <RuntimeIdentifiers>win10-x64;osx-x64</RuntimeIdentifiers>
+```
+
+### VSCode settings
+
+Let's configure VS Code to build/debug this project
+VSCode use tasks to run things.
+
+- VSCODE `> Tasks: Configure Task Runner`
+- choose `.NET Core`
+
+To run it:
+
+- VSCODE `> Tasks: Run Build Task`
+- choose `build`
+
+We can also set this task as the default one.
+
+- VSCODE `> Tasks: Configure Default Build Task`
+- choose `build`
+
+So now the default run build use that
+
+If there is an error, are shown in `PROBLEMS` tab
+You can move between errors with
+
+- VSCODE `> Go to Next Error or Warning`
+
+Now, to debug
+
+- Right click on the project in `F# PROJECT EXPLORER`
+- `Configure as Start up project for Debugging`
+
+and to debug
+
+- or `> Debug: continue`
+- or `F5`
+
+### External package
+
+For example we need to parse the command line arguments
+We want to use [Argu](http://fsprojects.github.io/Argu/) library
+
+to manage the packages in the project, we can use the `dotnet add` and `dotnet remove` commands
+
+> RUN `dotnet add package Argu`
+
+this add a packagereference to the project
+
+```
+    <PackageReference Include="Argu" Version="3.7.0" />
+```
+
+and restore the project (download the package).
+
+We can now use argu to manage command line args
+First declaring the arguments
+
+```fsharp
+open Argu
+
+type CLIArguments =
+    | Port of tcp_port:int
+with
+    interface IArgParserTemplate with
+        member s.Usage =
+            match s with
+            | Port _ -> "specify a primary port."
+```
+
+and doing the parsing in the `main`
+
+```fsharp
+    let parser = ArgumentParser.Create<CLIArguments>(programName = "sample1")
+
+    try
+        let args = parser.Parse argv
+
+        match args.GetAllResults() with
+        | [Port p] -> printfn "set port %i" p
+        | _ -> ()
+
+        0 // return an integer exit code
+    with
+    | :? ArguParseException as ex ->
+        printfn "%s" ex.Message
+        1
+    | ex ->
+        printfn "Internal Error:"
+        printfn "%s" ex.Message
+        2
+```
+
+to check is working:
+
+> RUN `dotnet run -- --help`
+> RUN `dotnet run -- --port 81`
+
+**NOTE** by default configuration, the `--help` raise an exception in Argu.
+Try with debugging, you can see the `ex.ErrorCode` is `HelpText`
