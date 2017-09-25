@@ -61,7 +61,7 @@ Docker 17.06 or higher is recommended because the workshop use the [multi stage 
 
 Docker images to download:
 
-```
+```bash
 docker pull microsoft/dotnet:2.0-sdk
 docker pull microsoft/dotnet:2.0-runtime
 docker pull microsoft/dotnet:2.0-runtime-deps
@@ -69,7 +69,7 @@ docker pull microsoft/dotnet:2.0-runtime-deps
 
 Check is installed correctly:
 
-```
+```bash
 docker run --rm microsoft/dotnet:2.0-sdk dotnet --info
 ```
 
@@ -97,7 +97,7 @@ Microsoft .NET Core Shared Framework Host
 
 and
 
-```
+```bash
 docker run --rm microsoft/dotnet:2.0-runtime dotnet --info
 ```
 
