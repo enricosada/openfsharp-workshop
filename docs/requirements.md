@@ -12,7 +12,7 @@
 
 Install the Sdk (not the Runtime):
 
-[https://www.microsoft.com/net/download/core#/sdk]
+[https://www.microsoft.com/net/download/core#/sdk](https://www.microsoft.com/net/download/core#/sdk)
 
 In the page there are also the `Step-by-step instructions`
 
@@ -37,7 +37,7 @@ Product Information:
 
 For unix/mac, Windows doesnt need it
 
-http://www.mono-project.com/download/
+[http://www.mono-project.com/download/](http://www.mono-project.com/download/)
 
 Recommended 5.2 , required >= 4.8
 
@@ -108,7 +108,7 @@ Microsoft .NET Core Shared Framework Host
 
 Install:
 
-https://code.visualstudio.com/download
+[https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
 Extensions to install ([docs](https://code.visualstudio.com/docs/editor/extension-gallery)):
 
