@@ -5,12 +5,11 @@ permalink: /requirements/
 # Requirements
 
 - [.NET Core Sdk 2.0](#dotnetsdk)
-- Visual Studio Code
+- [Mono](#mono) (on unix/mac)
+- [Docker and images](#docker)
+- [Visual Studio Code](#vscode)
   - C# extension
   - Ionide-fsharp extension
-- Mono (on unix/mac)
-- Docker and images
-
 
 <a name="dotnetsdk"></a>
 ## .NET Core Sdk 2.0
