@@ -4,7 +4,7 @@ permalink: /requirements/
 
 # Requirements
 
-- .NET Core Sdk 2.0
+- [.NET Core Sdk 2.0](#dotnetsdk)
 - Visual Studio Code
   - C# extension
   - Ionide-fsharp extension
@@ -12,6 +12,7 @@ permalink: /requirements/
 - Docker and images
 
 
+<a name="dotnetsdk"></a>
 ## .NET Core Sdk 2.0
 
 Install the Sdk (not the Runtime):
@@ -37,6 +38,7 @@ Product Information:
 <additional info about os>
 ```
 
+<a name="mono"></a>
 ## Mono on unix/mac
 
 For unix/mac, Windows doesnt need it
@@ -53,6 +55,7 @@ Check if is installed correctly with `mono --version` should print:
 Mono JIT compiler version 5.2.0.224 (tarball Mon Sep 18 17:33:20 UTC 2017)
 ```
 
+<a name="docker"></a>
 ## Docker images
 
 Docker 17.06 or higher is recommended because the workshop use the [multi stage build](https://docs.docker.com/engine/userguide/eng-image/multistage-build/), but can be adapted if a previous versions.
@@ -108,6 +111,7 @@ Microsoft .NET Core Shared Framework Host
   Build    : e8b8861ac7faf042c87a5c2f9f2d04c98b69f28d
 ```
 
+<a name="vscode"></a>
 ## Visual Studio Code
 
 Install:
