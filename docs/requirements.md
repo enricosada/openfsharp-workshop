@@ -1,3 +1,7 @@
+---
+permalink: /requirements/
+---
+
 # Requirements
 
 - .NET Core Sdk 2.0
