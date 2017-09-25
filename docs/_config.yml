@@ -3,5 +3,5 @@ theme: jekyll-theme-minimal
 title: MODERN F# DEVELOPMENT USING .NET SDK
 description: Open F# Workshop
 
-github.is_project_page: false
+github.is_project_page: "false"
 
