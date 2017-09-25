@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
 
-site.title: MODERN F# DEVELOPMENT USING .NET SDK
-site.description: Workshop
+title: MODERN F# DEVELOPMENT USING .NET SDK
+description: Workshop
 
-site.github.is_project_page: false
+github.is_project_page: false
 
