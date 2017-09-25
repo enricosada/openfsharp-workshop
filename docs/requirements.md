@@ -12,7 +12,7 @@
 
 Install the Sdk (not the Runtime):
 
-https://www.microsoft.com/net/download/core#/sdk
+[https://www.microsoft.com/net/download/core#/sdk]
 
 In the page there are also the `Step-by-step instructions`
 
