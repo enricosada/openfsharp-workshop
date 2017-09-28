@@ -14,11 +14,18 @@ Features:
 - template can contains files, a project, multiple projects, anything.
 - some types (like project) have special features (target framework, etc)
 
-Some refs:
+Some Docs:
 
 - [dotnet new docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore2x)
 - [Custom templates docs](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)
+
+Some samples and how to:
+
 - [.net template samples](https://github.com/dotnet/dotnet-template-samples)
 - [list of additional avaiable packages](https://github.com/dotnet/templating/wiki/Available-templates-for-dotnet-new)
 
-The base is the `.template.config/template.json` file, who contains the info about the package
+
+
+The base is the `.template.config/template.json` file, who contains the info about the template.
+
+
