@@ -3,4 +3,5 @@ theme: jekyll-theme-minimal
 title: MODERN F# DEVELOPMENT USING .NET SDK
 
 github.is_project_page: "false"
+repository: enricosada/openfsharp-workshop.github.io
 
