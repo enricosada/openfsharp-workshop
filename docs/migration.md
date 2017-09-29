@@ -19,7 +19,22 @@ Or both, so .net core (`netcoreapp2.0`) and `net461`
 
 Best way is:
 
+- first add .net standard/.net core in parallel to existing, until the final package support it
+- add cross targeting to new added project, to support .net standard and previous framework
+- generate the package with all framework from the new project
+- remove the old projects
 
+## Example of migration
+
+If you dont have a project you want to convert, you can try with
+
+```
+https://github.com/fsprojects/FSharpx.Collections
+```
+
+The only rule are:
+
+- the project dependancies should already support .net standard/.net core (check `paket.dependencies` if exists)
 
 ## Convert the library, target NETStandard
 
@@ -104,7 +119,11 @@ Now just the project reference to library:
 dotnet add reference ..\..\src\FSharpx.Collections.NetStandard\FSharpx.Collections.fsproj
 ```
 
-and let's test it with `dotnet test`
+and let's test it with 
+
+```
+dotnet test
+```
 
 And there are errors. Usually because we upgraded version of out dependencies
 
@@ -117,7 +136,11 @@ dotnet sln FSharpx.Collections.NetStandard.sln add src\FSharpx.Collections.NetSt
 dotnet sln FSharpx.Collections.NetStandard.sln add tests\FSharpx.Collections.Tests.NetStandard\FSharpx.Collections.Tests.NetStandard.fsproj
 ```
 
-And reload workspace with `> F#: Change Workspace or Solution`
+And reload workspace with 
+
+```
+> F#: Change Workspace or Solution
+```
 
 Now back to the errors:
 
@@ -138,7 +161,13 @@ and fix build errors and tests until works :D
 
 ## package it
 
-Run `dotnet pack -c Release` or `dotnet pack -c Release /p:Version=1.2.3` to generate a specific version
+Run 
+
+```
+dotnet pack -c Release
+```
+
+or `dotnet pack -c Release /p:Version=1.2.3` to generate a specific version
 
 The `-c Release` with build it in `Release` configuration, if needed
 
@@ -173,7 +202,11 @@ Create a `tools.proj`. It's just an empty proj with the .net cli tool reference
 </Project>
 ```
 
-and restore it with `dotnet restore`
+and restore it with 
+
+```
+dotnet restore
+```
 
 Now **when the current directory is this directory** can be executed with `dotnet mergenupkg` (no `-` sign), like:
 
