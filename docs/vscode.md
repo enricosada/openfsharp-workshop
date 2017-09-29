@@ -1,4 +1,15 @@
 
+## First time install
+
+You probably need the debugger.
+
+```
+> Debug: Download .NET Core debugger
+```
+
+**NOTE** That require the `C#` extension to be installed, see Requirements
+
+
 ## Issues with intellisense
 
 For issue (red squiggles, references not works, etc), you can try
