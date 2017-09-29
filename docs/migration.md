@@ -135,8 +135,57 @@ also `#if !NETCOREAPP2_0` can be used, if the project doesnt want to support old
 
 and fix build errors and tests until works :D
 
+
+## package it
+
+Run `dotnet pack -c Release` or `dotnet pack -c Release /p:Version=1.2.3` to generate a specific version
+
+The `-c Release` with build it in `Release` configuration, if needed
+
 ## add the netstandard to the package
 
+Is possibile to make the project target both frameworks (so `net461` and `netstandard2.0`) using `TargetFrameworks` (plural)
+And creating the package with just one `dotnet pack`, so pratically replacing the old way.
+
+But if you want to just add netstandard, we can use the old way, so no changes needed for .NET Framework
+
+This can be done using a .net cli tool: [dotnet-mergenupkg](https://github.com/enricosada/dotnet-mergenupkg)
+
+The idea is to use `dotnet mergenupkg` to add the .net standard part of the just built package, to the existing package
+
+Is a .net cli tool, so can be added to any project adding a `<DotnetCliToolReference`, but because is a generic tool, can be moved in a shared tools project, because not really related to the project itself
+
+Create a directory tools and change current directory to it.
+
+Create a `tools.proj`. It's just an empty proj with the .net cli tool reference
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-mergenupkg" Version="2.*" />
+  </ItemGroup>
+
+</Project>
+```
+
+and restore it with `dotnet restore`
+
+Now **when the current directory is this directory** can be executed with `dotnet mergenupkg` (no `-` sign), like:
+
+```
+dotnet mergenupkg --help
+```
+
+We can now use that to merge the two packages:
+
+```
+dotnet mergenupkg --source ../bin/FSharpx.Collections.1.17.0.nupkg --other ../src/FSharpx.Collections.NetStandard/bin/Release/FSharpx.Collections.1.0.0.nupkg --framework netstandard2.0
+```
 
 
 

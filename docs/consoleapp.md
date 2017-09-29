@@ -1,7 +1,8 @@
+---
+permalink: /consoleapp/
+---
 
-
-
-## Sample 1 - console app
+# Sample 1 - console app
 
 In a `sample1` directory
 

@@ -1,3 +1,7 @@
+---
+permalink: /docker/
+---
+
 Based on docs from https://github.com/dotnet/dotnet-docker-samples
 
 Three workflow:

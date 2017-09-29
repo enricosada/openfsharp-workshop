@@ -1,4 +1,8 @@
-## Sample 2 - library
+---
+permalink: /library/
+---
+
+## library
 
 In a `sample2` directory
 
