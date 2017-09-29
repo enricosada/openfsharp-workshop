@@ -6,6 +6,7 @@ permalink: /compatibility/
 
 - Some help if your library use unsupported api:
   - apiport
+  - .NET standard [docs](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 
 
 <a name="apiport"></a>
