@@ -4,15 +4,15 @@ permalink: /library/
 
 ## library
 
-In a `sample2` directory
+In a `sample2` directory, run
 
-> RUN `mkdir sample2 && cd sample2`
+```
+mkdir sample2 && cd sample2
+```
 
 ### dotnet new
 
-Now let's create a library app 
-
-> RUN
+Now let's create a library app, run
 
 ```
 dotnet new lib -n l1 -lang f#
@@ -20,12 +20,18 @@ dotnet new lib -n l1 -lang f#
 
 the `-n` pass the name of the project, and create a subdirectory.
 
-and open `code .`
+and open 
+
+```
+code .
+```
 
 Because the project is in a subdirectory, the `dotnet build` fails because doesnt know
 what project to build. Is enough to pass the directory or the path of project file.
 
-> RUN `dotnet build l1`
+```
+dotnet build l1
+```
 
 Same in code, in `tasks.json`, set `"command": "dotnet build l1",`
 
@@ -33,11 +39,15 @@ Same in code, in `tasks.json`, set `"command": "dotnet build l1",`
 
 as before, create a simple console app `c1`
 
-> RUN `dotnet new console -n c1 -lang f#`
+```
+dotnet new console -n c1 -lang f#
+```
 
 And now reference the `l1` from `c1`
 
-> RUN `dotnet add c1 reference l1/l1.fsproj`
+```
+dotnet add c1 reference l1/l1.fsproj
+```
 
 Is now possibile to use the methods from l1 in c1
 Add to main
@@ -58,11 +68,15 @@ all project referenced from the initial one.
 
 To add an unit test project, based on [xUnit](https://xunit.github.io/) Library
 
-> RUN `dotnet new xunit -n l1.Tests -lang f#`
+```
+dotnet new xunit -n l1.Tests -lang f#
+```
 
 And add the project reference to `l1`
 
-> RUN `dotnet add l1.Tests reference l1/l1.fsproj`
+```
+dotnet add l1.Tests reference l1/l1.fsproj
+```
 
 Now let's change the l1 to refactor and extract an `helloMessage` function
 
