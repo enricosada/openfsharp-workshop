@@ -141,7 +141,9 @@ dotnet new expecto -n l1.Test2 -o l1.Tests2 -lang f#
 
 And add the project reference to `l1`
 
-> RUN `dotnet add l1.Tests2 reference l1/l1.fsproj`
+```
+dotnet add l1.Tests2 reference l1/l1.fsproj
+```
 
 and add a new test case
 
@@ -160,7 +162,9 @@ Because is a normal console app, it's possibile to debug it.
 
 To create the nuget package from library, is possibile to use the `dotnet pack` command
 
-> RUN `dotnet pack l1 -c Release /p:Version=1.2.3`
+```
+dotnet pack l1 -c Release /p:Version=1.2.3
+```
 
 this will create a package
 
@@ -182,7 +186,7 @@ to push a package to a nuget feed, you can use `dotnet nuget push`
 
 For example, to push to myget feed
 
-> RUN
+RUN
 
 ```
 dotnet nuget push l1/bin/Release/l1.1.2.3.nupkg -s https://www.myget.org/F/openfsharp-workshop/api/v2/package -k e89848f5-a549-4238-8016-24cbed33dfcc
