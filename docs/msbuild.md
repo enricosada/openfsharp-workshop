@@ -8,6 +8,7 @@ permalink: /msbuild/
 New features of the Sdk
 
 - Create a custom nuget package (like with `nuspec`)
+- Add shared auto-imported properties, with `Directory.build.props`
 
 
 <a name="custom-pack"></a>
@@ -42,9 +43,11 @@ Is possibile to create a file with `.*proj` extension (`.proj` is ok) and `dotne
 </Project>
 ```
 
-To create the nuget
+To create the nuget, run
 
-> RUN `dotnet pack`
+```
+dotnet pack
+```
 
 The first properties are needed to skip compilation, ignore implicit references
 
@@ -52,4 +55,28 @@ The first properties are needed to skip compilation, ignore implicit references
 
 All the usual `Pack` properties (like `PackageId`, `Authors`, etc) can be used.
 Also `PackageReference` if needed.
+
+<a name="directory-build-props"></a>
+## add shared auto-imported properties, with `Directory.Build.props`
+
+The Sdk search in the directory hieriachy, auto-import if exists, a file named
+
+```
+Directory.Build.props
+```
+
+This can be useful to add some shared properties, like package metadata for `pack`
+
+```xml
+<Project ToolsVersion="15.0">
+
+  <PropertyGroup>
+    <Version>2.1.0</Version>
+    <Authors>Enrico Sada</Authors>
+    <Summary>Merge nupkg dependencies</Summary>
+    <Description>Merge dependencies of two nupkg packages</Description>
+  </PropertyGroup>
+</Project>
+```
+
 

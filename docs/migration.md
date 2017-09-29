@@ -221,3 +221,12 @@ dotnet mergenupkg --source ../bin/FSharpx.Collections.1.17.0.nupkg --other ../sr
 ```
 
 And the package now support .NET Standard 2.0 and is ready to be published
+
+## Results
+
+The result of this, is in the [PR fsprojects/FSharpx.Collections#80](https://github.com/fsprojects/FSharpx.Collections/pull/80)
+
+## Additional work
+
+Use paket instead of project references, some info in [paket docs](https://fsprojects.github.io/Paket/paket-and-dotnet-cli.html)
+

@@ -2,7 +2,7 @@
 permalink: /library/
 ---
 
-## library
+# library
 
 In a `sample2` directory, run
 
@@ -10,7 +10,7 @@ In a `sample2` directory, run
 mkdir sample2 && cd sample2
 ```
 
-### dotnet new
+## dotnet new
 
 Now let's create a library app, run
 
@@ -35,7 +35,7 @@ dotnet build l1
 
 Same in code, in `tasks.json`, set `"command": "dotnet build l1",`
 
-### reference from a console app
+## reference from a console app
 
 as before, create a simple console app `c1`
 
@@ -64,7 +64,7 @@ to run it:
 this is neeeded because `dotnet build` doesnt build all project in the subdirectories, but
 all project referenced from the initial one.
 
-### test with xunit
+## test with xunit
 
 To add an unit test project, based on [xUnit](https://xunit.github.io/) Library
 
@@ -109,7 +109,7 @@ Now tests can be executed with
 
 - `> Tasks: Run Test Task`
 
-### test with expecto
+## test with expecto
 
 The `dotnet new` allow to import additinal templates.
 for example, let use expecto
@@ -138,6 +138,9 @@ dotnet new expecto -n l1.Test2 -o l1.Tests2 -lang f#
 - remove `FSharp.NET.Sdk`, `FSharp.Core` references 
 - change tfm to `<TargetFramework>netcoreapp2.0</TargetFramework>`
 - change `Microsoft.DotNet.Watcher.Tools` version to `2.0.0`
+
+more info in [netcorecli-fsc wiki page 1.0 -> 2.0](https://github.com/dotnet/netcorecli-fsc/wiki/How-to-migrate-1.0-projects-to-2.0)
+
 
 And add the project reference to `l1`
 
