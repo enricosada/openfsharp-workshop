@@ -4,23 +4,27 @@ permalink: /consoleapp/
 
 # Sample 1 - console app
 
-In a `sample1` directory
+In a `sample1` directory, run
 
-> RUN `mkdir sample1 && cd sample1`
+```
+mkdir sample1 && cd sample1
+```
 
 ### dotnet new
 
 Now let's create a console app 
 
-> RUN
+RUN
 
 ```
 dotnet new console -lang f#
 ```
 
-let's open code to inspect it
+let's open code to inspect it, run
 
-> RUN `code .`
+```
+code .
+```
 
 A normal console app is:
 - a `sample1.fsproj`: the project file.
@@ -40,7 +44,11 @@ It can be done in the the terminal
 
 ### dotnet build
 
-> RUN `dotnet build`
+run
+
+```
+dotnet build
+```
 
 This compile the project and show the output:
 
@@ -59,12 +67,14 @@ So the output is `bin/Debug/netcoreapp2.0/sample1.dll`
 
 To run it:
 
-> RUN `dotnet bin/Debug/netcoreapp2.0/sample1.dll`
+```
+dotnet bin/Debug/netcoreapp2.0/sample1.dll
+```
 
 Now let's pass some arguments.
 First change the program to print the arguments.
 
-> DO add to the main
+DO add to the main
 
 ```
 printfn "%A" argv
@@ -72,9 +82,7 @@ printfn "%A" argv
 
 ### dotnet run
 
-Now another time, compile and execute
-
-> RUN
+Now another time, compile and execute. Run:
 
 ```
 dotnet build
@@ -83,7 +91,9 @@ dotnet bin/Debug/netcoreapp2.0/sample1.dll a b --other a
 
 A faster way to do it, is use `dotnet run` command, who does the same thing
 
-> RUN `dotnet run -- a b`
+```
+dotnet run -- a b
+```
 
 ### dotnet publish
 
@@ -104,7 +114,11 @@ Two possibilities of deployment:
 
 ### First let's try FDD
 
-> RUN `dotnet publish`
+Run 
+
+```
+dotnet publish
+```
 
 This create the `bin/Debug/netcoreapp2.0/publish/` directory
 who can be copied in another machine, and run with
@@ -115,7 +129,7 @@ dotnet sample1.dll
 
 ### Now a SCD, in another directory
 
-> RUN 
+Run 
 
 ```
 dotnet publish --self-contained --runtime win-x64 --output out
@@ -129,9 +143,7 @@ Doing the same for osx
 dotnet publish --self-contained --runtime osx-x64 --output outosx
 ```
 
-Or linux
-
-> RUN
+Or linux, run
 
 ```
 dotnet publish --self-contained -r linux-x64 -o outlinux -c Release
@@ -191,7 +203,9 @@ We want to use [Argu](http://fsprojects.github.io/Argu/) library
 
 to manage the packages in the project, we can use the `dotnet add` and `dotnet remove` commands
 
-> RUN `dotnet add package Argu`
+```
+dotnet add package Argu
+```
 
 this add a packagereference to the project
 
@@ -241,8 +255,10 @@ and doing the parsing in the `main`
 
 to check is working:
 
-> RUN `dotnet run -- --help`
-> RUN `dotnet run -- --port 81`
+```
+dotnet run -- --help
+dotnet run -- --port 81
+```
 
 **NOTE** by default configuration, the `--help` raise an exception in Argu.
 Try with debugging, you can see the `ex.ErrorCode` is `HelpText`
