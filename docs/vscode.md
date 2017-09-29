@@ -1,3 +1,6 @@
+---
+permalink: /vscode/
+---
 
 ## First time install
 
