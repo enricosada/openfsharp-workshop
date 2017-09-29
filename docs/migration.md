@@ -10,6 +10,7 @@ If you have an existing project and want to add support for .NET Standard or .NE
 - Compatibility of codebase:
   - of BCL surface api used to .NET Standard or .NET Core
   - of dependencies
+  - see <a href="{{ site.baseurl }}{% link compatibility.md %}"><strong>compatibility</strong></a>
 - Infrastructure (build script, requirements, tools)
 
 **NOTE** The .NET Sdk doesnt support just .NET Core/Standard, but also normal .NET Framework.
@@ -19,7 +20,7 @@ Or both, so .net core (`netcoreapp2.0`) and `net461`
 
 Best way is:
 
-- first add .net standard/.net core in parallel to existing, until the final package support it
+- first add .net standard/.net core in parallel to existing, until the final package support it (with merge of packages)
 - add cross targeting to new added project, to support .net standard and previous framework
 - generate the package with all framework from the new project
 - remove the old projects
