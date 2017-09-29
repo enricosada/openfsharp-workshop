@@ -187,8 +187,4 @@ We can now use that to merge the two packages:
 dotnet mergenupkg --source ../bin/FSharpx.Collections.1.17.0.nupkg --other ../src/FSharpx.Collections.NetStandard/bin/Release/FSharpx.Collections.1.0.0.nupkg --framework netstandard2.0
 ```
 
-
-
-<a name="custom-pack"></a>
-## create nuget packages custom (no compilation)
-
+And the package now support .NET Standard 2.0 and is ready to be published
