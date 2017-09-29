@@ -10,7 +10,7 @@ Three workflow:
 2. use `sdk` docker image to build, and use `runtime` image to run it
 3. self contained, with any image based on os (supported by .net core).
 
-# console app
+## console app
 
 Use workflow 2, build with sdk and run with runtime image
 
@@ -18,13 +18,15 @@ This is supported by multi staged docker build
 
 In a `sample4` directory.
 
-first, let's create a console app
+first, let's create a console app, run:
 
-> RUN `dotnet new console -lang f#`
+```
+dotnet new console -lang f#
+```
 
 Now create a `Dockerfile`:
 
-```
+```dockerfile
 FROM microsoft/dotnet:2.0-sdk AS build-env
 WORKDIR /app
 
@@ -55,11 +57,15 @@ out/
 
 and build it
 
-> RUN `docker build -t sample4 .`
+```
+docker build -t sample4 .
+```
 
 and run it
 
-> RUN `docker run --rm sample4 "from inside docker"`
+```
+docker run --rm sample4 "from inside docker"
+```
 
 # web app
 
@@ -69,11 +75,15 @@ In a `sample4` directory.
 
 first, let's create a console app
 
-> RUN `dotnet new console -lang f#`
+```
+dotnet new console -lang f#
+```
 
 And add Suave
 
-> RUN `dotnet add package Suave`
+```
+dotnet add package Suave
+```
 
 Now add suave code in `main`
 
@@ -91,7 +101,7 @@ and that's exposed to host at http://127.0.0.1:8083
 
 Now the `Dockerfile`
 
-```
+```dockerfile
 FROM microsoft/dotnet:2.0-sdk AS build-env
 WORKDIR /app
 
@@ -119,7 +129,14 @@ obj/
 out/
 ```
 
-Now build and run
+Now build
 
-- `docker build -t sample5 .`
-- `docker run --rm -p 8083:8083 sample5`
+```
+docker build -t sample5 .
+```
+
+and run
+
+```
+docker run --rm -p 8083:8083 sample5
+```

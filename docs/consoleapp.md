@@ -30,7 +30,7 @@ A normal console app is:
 - a `sample1.fsproj`: the project file.
 - a `Program.fs`: the source file
 
-> DO open the `Program.fs` in the editor
+Open the `Program.fs` in the editor
 
 This is the entrypoint of the of the program, the `main` and the args passed to the console app
 
@@ -209,7 +209,7 @@ dotnet add package Argu
 
 this add a packagereference to the project
 
-```
+```xml
     <PackageReference Include="Argu" Version="3.7.0" />
 ```
 
